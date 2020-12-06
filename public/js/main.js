@@ -333,3 +333,14 @@ jQuery(document).ready(function($) {
           
         })
 });
+
+// NAVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+$.get("nav", function (data) {
+	$(".nav-placeholder").replaceWith(data);
+});
+
+$.get("footer", function (data) {
+	$(".footer-placeholder").replaceWith(data);
+});
+
+// sign in up 
