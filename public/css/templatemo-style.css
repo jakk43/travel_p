@@ -1243,3 +1243,14 @@ footer .contact-info ul li a {
   }
   
 }
+
+/* -------------------------------------------------------- */
+
+
+.card{
+  border: none;
+}
+
+h2{
+  text-align: center;
+}
