@@ -1,25 +1,96 @@
 var express = require('express');
 var router = express.Router();
-
+var mysql = require('mysql');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+	res.render('index', {
+		title: 'Express'
+	});
+});
+router.get('/content', function (req, res, next) {
+	res.render('content', {
+		title: 'Express'
+	});
+});
+router.get('/footer', function (req, res, next) {
+	res.render('footer', {
+		title: 'Express'
+	});
+});
+router.get('/nav', function (req, res, next) {
+	res.render('nav', {
+		title: 'Express'
+	});
+});
+router.get('/sign', function (req, res, next) {
+	res.render('sign', {
+		title: 'Express'
+	});
+});
+var con = mysql.createConnection({
+	host: "localhost", //or name (dns)
+	user: "root",
+	password: "",
+	database: "myweb"
+});
+con.connect((err) => {
+	if (err) {
+		console.log("database connect failed...");
+	}
+});
+router.post('/user_sign_up', function (req, res) {
+	var name = req.body.user_name
+	var email = req.body.email
+	var pw = req.body.password
+	var cpw = req.body.confirm_password
+	var sql = "insert into users(user_name,email,password,confirm_password)" //care number
+	sql += " values('" + name + "','" + email + "','" + pw + "','" + cpw + "')";
+
+		if(pw===cpw){
+      con.query(sql, function (err, result) {
+        if (err) {
+          res.send("user name is already in use  ");
+        } else {
+          console.log(result)
+          res.send("Successful")
+        }
+      })
+    }else{
+      res.send("passowrd not match")
+    }
+
 });
 
-router.get('/content', function(req, res, next) {
-  res.render('content', { title: 'Express' });
-});
 
-router.get('/footer', function(req, res, next) {
-  res.render('footer', { title: 'Express' });
-});
+router.post('/user_sign_in',function(req, res){
+  var user_name = req.body.user_name2;
+	var password = req.body.password2;
+	con.query("SELECT * FROM users WHERE user_name = ?", [user_name], function (error, results) {
+    console.log("result"+results)
+		if (error) {
+      res.send("Wrong password");
+		} else {
 
-router.get('/nav', function(req, res, next) {
-  res.render('nav', { title: 'Express' });
-});
-router.get('/sign', function(req, res, next) {
-  res.render('sign', { title: 'Express' });
-});
 
+
+			console.log('The solution is: ', results);
+			if (results.length > 0) {
+				if (results[0].password == password) {
+          res.send("Successful")
+				} else {
+					res.send("User and password does not match");
+				}
+			} else {
+        console.log("result"+results)
+
+				res.send("User does not exits -------");
+			}
+    }
+    
+
+
+
+	});
+})
 
 module.exports = router;
