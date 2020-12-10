@@ -30,9 +30,19 @@ if(weekday_text(json) && weekday_text_time(json) != empty){
 }
 
 
+if ( !empty((latitude(json) && longitude(json)))) {
+    initMap(latitude(json), longitude(json), "map");
+}
+
 });
 
+function latitude(data) {
+	return data.result.latitude;
+}
 
+function longitude(data) {
+	return data.result.longitude;
+}
 
 function weekday_text(data) {
 	return (data.result.opening_hours.weekday_text.day1.day + "<br>" + data.result.opening_hours.weekday_text.day2.day + "<br>" + data.result.opening_hours.weekday_text.day3.day + "<br>" + data.result.opening_hours.weekday_text.day4.day + "<br>" + data.result.opening_hours.weekday_text.day5.day + "<br>" + data.result.opening_hours.weekday_text.day6.day + "<br>" + data.result.opening_hours.weekday_text.day7.day);
@@ -40,4 +50,20 @@ function weekday_text(data) {
 
 function weekday_text_time(data) {
 	return (data.result.opening_hours.weekday_text.day1.time + "<br>" + data.result.opening_hours.weekday_text.day2.time + "<br>" + data.result.opening_hours.weekday_text.day3.time + "<br>" + data.result.opening_hours.weekday_text.day4.time + "<br>" + data.result.opening_hours.weekday_text.day5.time + "<br>" + data.result.opening_hours.weekday_text.day6.time + "<br>" + data.result.opening_hours.weekday_text.day7.time);
+}
+
+
+function initMap(a, b, c) {
+	const uluru = {
+		lat: a,
+		lng: b
+	};
+	const map = new google.maps.Map(document.getElementById(c), {
+		zoom: 15,
+		center: uluru,
+	});
+	const marker = new google.maps.Marker({
+		position: uluru,
+		map: map,
+	});
 }
