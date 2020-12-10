@@ -49,7 +49,7 @@ router.post('/user_sign_up', function (req, res) {
 		if(pw===cpw){
       con.query(sql, function (err, result) {
         if (err) {
-          res.send("user name is already in use  ");
+          res.send("user name is already in use ");
         } else {
           console.log(result)
           res.send("Successful")
