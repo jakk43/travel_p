@@ -62,35 +62,26 @@ router.post('/user_sign_up', function (req, res) {
 });
 
 
-router.post('/user_sign_in',function(req, res){
-  var user_name = req.body.user_name2;
-	var password = req.body.password2;
-	con.query("SELECT * FROM users WHERE user_name = ?", [user_name], function (error, results) {
-    console.log("result"+results)
+router.post("/user_sign_in", function (req, res) {
+	var user_name = req.body.user_name;
+	var password = req.body.password;
+	con.query("SELECT * FROM users WHERE user_name = ?", [user_name], function (error, results, fields) {
 		if (error) {
-      res.send("Wrong password");
+			// console.log("error ocurred",error);
+			res.send("err");
 		} else {
-
-
-
-			console.log('The solution is: ', results);
+			// console.log('The solution is: ', results);
 			if (results.length > 0) {
 				if (results[0].password == password) {
-          res.send("Successful")
+					res.send("Successful");
 				} else {
 					res.send("User and password does not match");
 				}
 			} else {
-        console.log("result"+results)
-
-				res.send("User does not exits -------");
+				res.json("User does not exits");
 			}
-    }
-    
-
-
-
+		}
 	});
-})
+});
 
 module.exports = router;
