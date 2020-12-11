@@ -5,7 +5,10 @@ Venue Template
 http://www.templatemo.com/tm-522-venue
 
 */
-
+body {
+  font-family: 'Kanit', ;
+ 
+}
 body {
   font-family: 'Raleway', 'sans-serif';
   background-color: #fff;
