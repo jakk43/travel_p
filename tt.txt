@@ -54,3 +54,48 @@ place_name: "ชายหาดนราทัศน์"
 tags: null
 thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/Image/CustomPOI/Thumbnail/P03006316.jpeg"
 update_date: "2020-04-20T10:36:14.497"
+
+
+ขขขขขขขขขขข
+อาหาร 
+category_code: "RESTAURANT"
+category_description: "ร้านอาหาร กาแฟ เบเกอรี่"
+destination: "ลพบุรี"
+distance: 0
+latitude: 14.807113
+location: {address: "", sub_district: "ทะเลชุบศร", district: "เมืองลพบุรี", province: "ลพบุรี", postcode: "15000"}
+longitude: 100.647654
+place_id: "P08009111"
+place_name: "ก๋วยเตี๋ยวต้มยำมันกุ้ง"
+tags: null
+thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/Image/CustomPOI/Thumbnail/P08009111.jpeg"
+update_date: "2019-11-14T13:56:18.41"
+
+
+ชชช
+category_code: "RESTAURANT"
+category_description: "ร้านอาหาร กาแฟ เบเกอรี่"
+destination: "กาญจนบุรี"
+distance: 0
+latitude: 14.018825
+location: {address: "", sub_district: "ปากแพรก", district: "เมืองกาญจนบุรี", province: "กาญจนบุรี", postcode: "71000"}
+longitude: 99.52828
+place_id: "P08000762"
+place_name: "แพอาหารธาราบุรี"
+tags: null
+thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/Image/CustomPOI/Thumbnail/P08000762.jpeg"
+update_date: "2019-09-16T10:38:40.117"
+
+=====
+category_code: "RESTAURANT"
+category_description: "ร้านอาหาร กาแฟ เบเกอรี่"
+destination: "เชียงใหม่"
+distance: 0
+latitude: 18.799343
+location: {address: "2/8 ถนนสุขเกษม", sub_district: "สุเทพ", district: "เมืองเชียงใหม่", province: "เชียงใหม่", postcode: "50200"}
+longitude: 98.965967
+place_id: "P08000748"
+place_name: "ไก่ย่างเชิงดอย"
+tags: null
+thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/Image/CustomPOI/Thumbnail/P08000748.jpeg"
+update_date: "2020-03-12T20:49:17.723"
