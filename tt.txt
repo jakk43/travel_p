@@ -1,0 +1,56 @@
+category_code: "ATTRACTION"
+category_description: "สถานที่ท่องเที่ยว"
+destination: "นครศรีธรรมราช"
+distance: 0
+latitude: 9.315623
+location: {address: "", sub_district: "ท้องเนียน", district: "ขนอม", province: "นครศรีธรรมราช", postcode: "80210"}
+longitude: 99.79169
+place_id: "P03000036"
+place_name: "เกาะนุ้ย-บ่อน้ำจืดกลางทะเล"
+tags: null
+thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/Image/CustomPOI/Thumbnail/P03000036.jpeg"
+update_date: "2020-04-24T13:02:59.07"
+
+
+ช
+category_code: "OTHER"
+category_description: "สถานที่อื่นๆ"
+destination: "พระนครศรีอยุธยา"
+distance: 0
+latitude: 14.369046
+location: {address: "", sub_district: "ภูเขาทอง", district: "พระนครศรีอยุธยา", province: "พระนครศรีอยุธยา", postcode: "13000"}
+longitude: 100.539826
+place_id: "P03001987"
+place_name: "เจดีย์ภูเขาทอง"
+tags: null
+thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/image/CustomPOI/Thumbnail/P03001987.jpg"
+update_date: "2019-06-06T17:14:07"
+
+ขขขข
+category_code: "ATTRACTION"
+category_description: "สถานที่ท่องเที่ยว"
+destination: "ชลบุรี"
+distance: 0
+latitude: 12.78590254
+location: {address: "888 หมู่ 8", sub_district: "นาจอมเทียน", district: "สัตหีบ", province: "ชลบุรี", postcode: "20250"}
+longitude: 100.91447594
+place_id: "P03012377"
+place_name: "สวนน้ำการ์ตูนเน็ทเวิร์ค อเมโซน"
+tags: null
+thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/Image/CustomPOI/Thumbnail/P03012377.jpeg"
+update_date: "2020-07-16T10:55:09.227"
+__proto__: Object
+
+ชชช
+category_code: "ATTRACTION"
+category_description: "สถานที่ท่องเที่ยว"
+destination: "นราธิวาส"
+distance: 0
+latitude: 6.44737547
+location: {address: "", sub_district: "บางนาค", district: "เมืองนราธิวาส", province: "นราธิวาส", postcode: "96000"}
+longitude: 101.8239671
+place_id: "P03006316"
+place_name: "ชายหาดนราทัศน์"
+tags: null
+thumbnail_url: "https://tatapi.tourismthailand.org/tatfs/Image/CustomPOI/Thumbnail/P03006316.jpeg"
+update_date: "2020-04-20T10:36:14.497"
