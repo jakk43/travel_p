@@ -1,10 +1,10 @@
+// ---------------tat-------------------
 $.ajaxSetup({
     headers: {
         'Authorization': 'bearer GqQmVELC0cHh9qrGNUDrl9KkZKQCWd9s6Yg1u9oUVbTqXKdXHWkl)9bjDd3gDQcFvTHPbQfsZlv3b)pqv)taLpW=====2',
         'Accept-Language': 'th'
     }
 });
-
 
 $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + "attraction" + "/" + "P03000001", function(json) {
     console.log(json)
@@ -29,7 +29,6 @@ if(weekday_text(json) && weekday_text_time(json) != empty){
     document.getElementById("weekday_text").innerHTML=("ไม่มี")
 }
 
-
 if ( !empty((latitude(json) && longitude(json)))) {
     initMap(latitude(json), longitude(json), "map");
 }
@@ -53,13 +52,14 @@ function weekday_text_time(data) {
 }
 
 
+// -----------------------map--------------------
 function initMap(a, b, c) {
 	const uluru = {
 		lat: a,
 		lng: b
 	};
 	const map = new google.maps.Map(document.getElementById(c), {
-		zoom: 15,
+		zoom: 10,
 		center: uluru,
 	});
 	const marker = new google.maps.Marker({
