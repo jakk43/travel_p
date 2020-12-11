@@ -78,10 +78,32 @@ function initMap(a, b, c) {
 
 const url = "https://covid19.th-stat.com/api/open/today"; // site that doesn’t send Access-Control-*
 fetch(url)
-    .then(response => response.json())
+    .then(function (response) {
+        return response.json() // แปลงข้อมูลที่ได้เป็น json
+    })
     .then(function (json) {
-        console.log(json.NewConfirmed)
-        // document.getElementById("NewConfirmed").innerHTML = JSON.stringify(json.NewConfirmed).slice(1, -1)
+        console.log(json)
+        document.getElementById("NewConfirmed").innerHTML = JSON.stringify(json.NewConfirmed)
+        document.getElementById("NewDeaths").innerHTML = JSON.stringify(json.NewDeaths)
+        document.getElementById("NewHospitalized").innerHTML = JSON.stringify(json.NewHospitalized)
+        document.getElementById("NewRecovered").innerHTML = JSON.stringify(json.NewRecovered)
+        document.getElementById("Hospitalized2").innerHTML = JSON.stringify(json.Hospitalized)
+    })
+
+
+const url2 = "https://covid19.th-stat.com/api/open/timeline"; // site that doesn’t send Access-Control-*
+fetch(url2)
+    .then(function (response) {
+        return response.json() // แปลงข้อมูลที่ได้เป็น json
+    })
+    .then(function (json) {
+        console.log(json.UpdateDate)
+        document.getElementById("UpdateDate").innerHTML = JSON.stringify(json.UpdateDate)
+
+        var totalCovid = json.Data[(json.Data.length) - 1]
+        document.getElementById("Confirmed").innerHTML = JSON.stringify(totalCovid.Confirmed)
+        document.getElementById("Deaths").innerHTML = JSON.stringify(totalCovid.Deaths)
+        document.getElementById("Recovered").innerHTML = JSON.stringify(totalCovid.Recovered)
+        document.getElementById("Hospitalized").innerHTML = JSON.stringify(totalCovid.Hospitalized)
 
     })
-    .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
