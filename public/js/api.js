@@ -98,7 +98,7 @@ fetch(url2)
     })
     .then(function (json) {
         console.log(json.UpdateDate)
-        document.getElementById("UpdateDate").innerHTML = JSON.stringify(json.UpdateDate)
+        document.getElementById("UpdateDate").innerHTML = JSON.stringify(json.UpdateDate).slice(1, -1)
 
         var totalCovid = json.Data[(json.Data.length) - 1]
         document.getElementById("Confirmed").innerHTML = JSON.stringify(totalCovid.Confirmed)

@@ -84,4 +84,23 @@ router.post("/user_sign_in", function (req, res) {
 	});
 });
 
+
+
+router.post('/contact', function (req, res) {
+	var email = req.body.email
+	var details = req.body.details
+	var sql = "insert into contact(email,details)" //care number
+	sql += " values('" + email + "','" + details + "')";
+	console.log(email)
+	con.query(sql, function (err, result) {
+        if (err) {
+          res.send("ส่งไม่สำเร็จ");
+        } else {
+        //   console.log(result)
+          res.send("ส่งแล้ว")
+        }
+      })
+
+});
+
 module.exports = router;
