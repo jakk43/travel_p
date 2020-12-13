@@ -11,7 +11,7 @@
     $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + "attraction" + "/" + "P03000001", function (json) {
         // console.log(json)
         //name
-        document.getElementById("place_name").innerHTML = JSON.stringify(json.result.place_name).slice(1, -1)
+        document.getElementById("place_name").innerHTML=JSON.stringify(json.result.place_name).slice(1, -1)
         //image
         try {
             $("#img").attr("src", JSON.stringify(json.result.web_picture_urls[0]).slice(1, -1));
