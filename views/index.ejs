@@ -287,26 +287,7 @@
             </div>
     </section>
     <footer>
-        <div class="container">
-            <div class="row">
-                <h2>ติดต่อพวกเรา</h2>
-                <form method='POST' accept="/" id="contact">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1Email"
-                            placeholder="name@example.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">ลายละเอียด</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1Details" rows="3"></textarea>
-                    </div>
-                    <p id="con_res"></p>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary">ส่ง</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <div class="mycontact"></div>
 
     </footer>
     <div class="sub-footer">
@@ -317,19 +298,7 @@
 
 
 
-    <script>
-        $("#contact").submit(function (event) {
-            event.preventDefault()
-            var formData3 = { //ทำเป็น json
-                'email': $("#exampleFormControlInput1Email").val(),
-                'details': $("#exampleFormControlTextarea1Details").val(),
-            }
-            alert("--")
-            $.post("/contact", formData3, function (result) {
-                $('#con_res').html(result);
-            })
-        })
-    </script>
+
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script> -->
     <!-- <script src="js/vendor/bootstrap.min.js"> </script> -->
     <script src="js/datepicker.js"></script>

@@ -356,5 +356,8 @@ $.get("nav", function (data) {
 $.get("footer", function (data) {
 	$(".footer-placeholder").replaceWith(data);
 });
+$.get("contact", function (data) {
+	$(".mycontact").replaceWith(data);
+});
 
 // sign in up 

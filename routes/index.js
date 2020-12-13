@@ -27,6 +27,11 @@ router.get('/sign', function (req, res, next) {
 		title: 'Express'
 	});
 });
+router.get('/contact', function (req, res, next) {
+	res.render('contact', {
+		title: 'Express'
+	});
+});
 var con = mysql.createConnection({
 	host: "localhost", //or name (dns)
 	user: "root",
