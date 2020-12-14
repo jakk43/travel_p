@@ -97,7 +97,7 @@ router.post('/contact', function (req, res) {
 	var details = req.body.details
 	var sql = "insert into contact(email,details)" //care number
 	sql += " values('" + email + "','" + details + "')";
-	console.log(email)
+	// console.log(email)
 	con.query(sql, function (err, result) {
         if (err) {
           res.send("ส่งไม่สำเร็จ");
