@@ -1266,4 +1266,6 @@ h2{
   /* The width is the width of the web page */
   }
 
- 
+  body {
+    font-family: "Kanit",;
+  }
