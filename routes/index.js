@@ -109,4 +109,11 @@ router.post('/contact', function (req, res) {
 
 });
 
+// ดึงข้อมูล Contact ออกมา
+router.get('/usercontact',function(req,res,next){
+	con.query('SELECT * FROM contact',function(err,rows){
+		res.send(rows);
+	})
+})
 module.exports = router;
+
