@@ -55,7 +55,7 @@
                  'email': $("#exampleFormControlInput1Email").val(),
                  'details': $("#exampleFormControlTextarea1Details").val(),
              }
-             // alert("--")
+            //  alert(formData3)
              $.post("/contact", formData3, function (result) {
                  $('#con_res').html(result);
              })

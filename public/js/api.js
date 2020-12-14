@@ -1,6 +1,15 @@
 // ---------------tat-------------------
 
-{
+
+function linktocontent(){
+    window.location = "http://localhost:3000/content";    
+    
+}
+
+
+
+function myplace(){
+    
     $.ajaxSetup({
         headers: {
             'Authorization': 'bearer GqQmVELC0cHh9qrGNUDrl9KkZKQCWd9s6Yg1u9oUVbTqXKdXHWkl)9bjDd3gDQcFvTHPbQfsZlv3b)pqv)taLpW=====2',
@@ -53,6 +62,10 @@
         return (data.result.opening_hours.weekday_text.day1.time + "<br>" + data.result.opening_hours.weekday_text.day2.time + "<br>" + data.result.opening_hours.weekday_text.day3.time + "<br>" + data.result.opening_hours.weekday_text.day4.time + "<br>" + data.result.opening_hours.weekday_text.day5.time + "<br>" + data.result.opening_hours.weekday_text.day6.time + "<br>" + data.result.opening_hours.weekday_text.day7.time);
     }
 
+}
+
+{
+   
 }
 
 

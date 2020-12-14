@@ -79,6 +79,7 @@ router.post("/user_sign_in", function (req, res) {
 			if (results.length > 0) {
 				if (results[0].password == password) {
 					res.send("Successful");
+					// res.send("Successful");
 				} else {
 					res.send("User and password does not match");
 				}
@@ -96,7 +97,7 @@ router.post('/contact', function (req, res) {
 	var details = req.body.details
 	var sql = "insert into contact(email,details)" //care number
 	sql += " values('" + email + "','" + details + "')";
-	console.log(email)
+	// console.log(email)
 	con.query(sql, function (err, result) {
         if (err) {
           res.send("ส่งไม่สำเร็จ");
