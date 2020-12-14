@@ -89,31 +89,7 @@
       </div>
       <div class="footer-placeholder"></div>
       <script>
-         $("#sign_up").submit(function (event) {
-         	event.preventDefault()
-         	var formData = { //ทำเป็น json
-         		'user_name': $("#user_name").val(),
-         		'email': $("#email").val(),
-         		'password': $("#password").val(),
-         		'confirm_password': $("#confirm_password").val()
-         	}
-         	$.post("/user_sign_up", formData, function (result) {
-         		$('#sign_up_failed').html(result);
-         	})
-         })
-         
-         $("#sign_in").submit(function (event) {
-         	event.preventDefault()
-         
-         	var formData2 = { //ทำเป็น json
-         		'user_name': $("#user_name2").val(),
-         		'password': $("#password2").val(),
-         	}
-         	$.post("/user_sign_in", formData2, function (result) {
-         		$('#sign_in_failed').html(result);
-         	})
-         })
-         
+
          
       </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>

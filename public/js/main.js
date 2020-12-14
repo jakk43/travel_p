@@ -361,3 +361,41 @@ $.get("contact", function (data) {
 });
 
 // sign in up 
+
+$("#sign_up").submit(function (event) {
+  event.preventDefault()
+  var formData = { //ทำเป็น json
+    'user_name': $("#user_name").val(),
+    'email': $("#email").val(),
+    'password': $("#password").val(),
+    'confirm_password': $("#confirm_password").val()
+  }
+  $.post("/user_sign_up", formData, function (result) {
+      if(result=="Successful"){
+         location.href = "http://localhost:3000/"
+      }else{
+         $('#sign_up_failed').html(result);
+      }
+    
+  })
+})
+
+$("#sign_in").submit(function (event) {
+  event.preventDefault()
+
+  var formData2 = { //ทำเป็น json
+    'user_name': $("#user_name2").val(),
+    'password': $("#password2").val(),
+  }
+  $.post("/user_sign_in", formData2, function (result) {
+    if(result=="Successful"){
+         // window.location
+         location.href = "http://localhost:3000/"
+        
+        //  $('#xxx').html("USER");
+      }else{
+         $('#sign_in_failed').html(result);
+      }
+  })
+})
+

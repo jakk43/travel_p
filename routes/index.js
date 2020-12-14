@@ -79,6 +79,7 @@ router.post("/user_sign_in", function (req, res) {
 			if (results.length > 0) {
 				if (results[0].password == password) {
 					res.send("Successful");
+					// res.send("Successful");
 				} else {
 					res.send("User and password does not match");
 				}
