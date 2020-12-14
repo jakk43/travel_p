@@ -1,15 +1,16 @@
 // ---------------tat-------------------
 
 
-function linktocontent(){
-    window.location = "http://localhost:3000/content";    
+function linktocontent(a){
+    // window.location = "http://localhost:3000/content";    
     
 }
 
 
 
-function myplace(){
-    
+function myplace(id){
+  
+
     $.ajaxSetup({
         headers: {
             'Authorization': 'bearer GqQmVELC0cHh9qrGNUDrl9KkZKQCWd9s6Yg1u9oUVbTqXKdXHWkl)9bjDd3gDQcFvTHPbQfsZlv3b)pqv)taLpW=====2',
@@ -17,7 +18,10 @@ function myplace(){
         }
     });
 
-    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + "attraction" + "/" + "P03000001", function (json) {
+
+    
+
+    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + "attraction" + "/" + id, function (json) {
         // console.log(json)
         //name
         document.getElementById("place_name").innerHTML=JSON.stringify(json.result.place_name).slice(1, -1)
@@ -63,11 +67,6 @@ function myplace(){
     }
 
 }
-
-{
-   
-}
-
 
 // -----------------------map--------------------
 function initMap(a, b, c) {
