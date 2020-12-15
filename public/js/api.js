@@ -8,7 +8,7 @@ function linktocontent(a){
 
 
 
-function myplace(id){
+function myplace(){
   
 
     $.ajaxSetup({
@@ -17,11 +17,12 @@ function myplace(id){
             'Accept-Language': 'th'
         }
     });
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    type  =urlParams.get('type');
+    id = urlParams.get('id');
 
-
-    
-
-    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + "attraction" + "/" + id, function (json) {
+    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + type + "/" + id, function (json) {
         // console.log(json)
         //name
         document.getElementById("place_name").innerHTML=JSON.stringify(json.result.place_name).slice(1, -1)
