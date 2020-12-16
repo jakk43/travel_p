@@ -14,7 +14,7 @@ function myplace() {
     type = urlParams.get('type');
     id = urlParams.get('id');
 
-    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + type + "/" + id, function(json) {
+    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + type + "/" + id, function (json) {
         // console.log(json)
         //name
         document.getElementById("place_name").innerHTML = JSON.stringify(json.result.place_name).slice(1, -1)
@@ -24,9 +24,16 @@ function myplace() {
         } catch {}
         //detail
         try {
-            document.getElementById("detail").innerHTML = JSON.stringify(json.result.place_information.detail).slice(1, -1)
+            if(json.result.place_information.detail != empty()){
+                document.getElementById("detail").innerHTML = JSON.stringify(json.result.place_information.detail).slice(1, -1)
+            }else{
+                document.getElementById("detail").innerHTML = JSON.stringify("ไม่ทราบรายละเอียด").slice(1, -1)
 
-        } catch {}
+            }
+            
+        } catch {
+            document.getElementById("detail").innerHTML = JSON.stringify("ไม่ทราบรายละเอียด")
+        }
         try {
             document.getElementById("district").innerHTML = JSON.stringify(json.result.location.district).slice(1, -1)
             document.getElementById("destination").innerHTML = JSON.stringify(json.result.destination).slice(1, -1)
@@ -39,7 +46,7 @@ function myplace() {
             $("#weekday_text").append(weekday_text(json));
             $("#weekday_text_time").append(weekday_text_time(json));
         } catch {
-            document.getElementById("weekday_text").innerHTML = ("ไม่มี")
+            document.getElementById("weekday_text").innerHTML = ("ไม่ทราบรายละเอียด")
 
         }
 
@@ -94,10 +101,10 @@ function initMap(a, b, c) {
 
 const url = "https://covid19.th-stat.com/api/open/today"; // site that doesn’t send Access-Control-*
 fetch(url)
-    .then(function(response) {
+    .then(function (response) {
         return response.json() // แปลงข้อมูลที่ได้เป็น json
     })
-    .then(function(json) {
+    .then(function (json) {
         // console.log(json)
         document.getElementById("NewConfirmed").innerHTML = JSON.stringify(json.NewConfirmed)
         document.getElementById("NewDeaths").innerHTML = JSON.stringify(json.NewDeaths)
@@ -109,10 +116,10 @@ fetch(url)
 
 const url2 = "https://covid19.th-stat.com/api/open/timeline"; // site that doesn’t send Access-Control-*
 fetch(url2)
-    .then(function(response) {
+    .then(function (response) {
         return response.json() // แปลงข้อมูลที่ได้เป็น json
     })
-    .then(function(json) {
+    .then(function (json) {
         // console.log(json.UpdateDate)
         document.getElementById("UpdateDate").innerHTML = JSON.stringify(json.UpdateDate).slice(1, -1)
 
@@ -132,7 +139,7 @@ function mysearch() {
     keyword = urlParams.get('keyword');
     // categories = urlParams.get('category');
     console.log("-222222222222222222-")
-    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=" + keyword + "&categories=ATTRACTION ", function(json) {
+    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=" + keyword + "&categories=ATTRACTION&numberOfResult=100", function (json) {
         // +"&categories="+categories
         // alert("mysearch")
         // console.log(json.result[0].place_id)
@@ -150,21 +157,19 @@ function mysearch() {
         // console.log(t_search)
 
         var count = 0;
-
-        for (let k = 0; k < 50; k++) {
+        console.log(json.result.length)
+        for (let k = 0; k < (json.result.length); k++) {
 
             try {
                 if (json.result[k].thumbnail_url != empty()) {
-                    
+
                     // document.getElementById("searchplace_name" + (count + 1)).innerHTML = JSON.stringify( json.result[k].place_name).slice(1, -1)
-                    document.getElementById("searchplace_name" + (count + 1)).innerHTML = JSON.stringify('<a href=content?type='+json.result[k].category_code+'&id='+json.result[k].place_id+'>'+json.result[k].place_name +'</a>').slice(1, -1)
+                    document.getElementById("searchplace_name" + (count + 1)).innerHTML = JSON.stringify('<a href=content?type=' + json.result[k].category_code + '&id=' + json.result[k].place_id + '>' + json.result[k].place_name + '</a>').slice(1, -1)
                     $("#searchimg" + (count + 1)).attr("src", JSON.stringify(json.result[k].thumbnail_url).slice(1, -1));
                     try {
                         document.getElementById("searchdes" + (count + 1)).innerHTML = JSON.stringify(json.result[k].destination).slice(1, -1)
 
                     } catch {}
-
-
                     count++;
                     if (count == 6) {
                         continue;
