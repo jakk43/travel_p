@@ -122,16 +122,15 @@ router.post("/user_sign_in", function (req, res) {
 });
 
 
-var d = new Date();
-
-var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-d.getHours() + ":" + d.getMinutes();
+var dateFormat = require('dateformat');
+var now = new Date();
+var mydate = dateFormat(now, "dd-mm-yy h:MM:ss TT");
 
 router.post('/contact', function (req, res) {
 	var email = req.body.email
 	var details = req.body.details
 	var sql = "insert into contact(date,email,details)" //care number
-	sql += " values('" + datestring + "','" + email + "','" + details + "')";
+	sql += " values('" + mydate + "','" + email + "','" + details + "')";
 	// console.log(email)
 
 if((email && details )!= ''){
