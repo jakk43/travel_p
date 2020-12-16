@@ -58,6 +58,11 @@ router.get('/usercontact_login', function (req, res, next) {
 		title: 'Express'
 	});
 });
+router.get('/search_login', function (req, res, next) {
+	res.render('search_login', {
+		title: 'Express'
+	});
+});
 var con = mysql.createConnection({
 	host: "localhost", //or name (dns)
 	user: "root",
