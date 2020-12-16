@@ -12,6 +12,11 @@ router.get('/content', function (req, res, next) {
 		title: 'Express'
 	});
 });
+router.get('/usercontact', function (req, res, next) {
+	res.render('usercontact', {
+		title: 'Express'
+	});
+});
 router.get('/footer', function (req, res, next) {
 	res.render('footer', {
 		title: 'Express'
