@@ -8,7 +8,6 @@ $.ajaxSetup({
 
 function myplace() {
 
-
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     type = urlParams.get('type');
@@ -171,7 +170,7 @@ function mysearch() {
 
                     } catch {}
                     count++;
-                    if (count == 6) {
+                    if (count == 12) {
                         continue;
                     }
                 }
