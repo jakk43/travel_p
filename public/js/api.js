@@ -5,11 +5,11 @@ $.ajaxSetup({
         'Accept-Language': 'th'
     }
 });
-
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
 function myplace() {
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+
     type = urlParams.get('type');
     id = urlParams.get('id');
 
@@ -133,8 +133,6 @@ fetch(url2)
 
 function mysearch() {
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
     keyword = urlParams.get('keyword');
     // categories = urlParams.get('category');
     console.log("-222222222222222222-")
