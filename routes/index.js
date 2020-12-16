@@ -122,12 +122,16 @@ router.post("/user_sign_in", function (req, res) {
 });
 
 
+var d = new Date();
+
+var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+d.getHours() + ":" + d.getMinutes();
 
 router.post('/contact', function (req, res) {
 	var email = req.body.email
 	var details = req.body.details
-	var sql = "insert into contact(email,details)" //care number
-	sql += " values('" + email + "','" + details + "')";
+	var sql = "insert into contact(date,email,details)" //care number
+	sql += " values('" + datestring + "','" + email + "','" + details + "')";
 	// console.log(email)
 
 if((email && details )!= ''){
@@ -148,12 +152,12 @@ if((email && details )!= ''){
 });
 
 // ดึงข้อมูล Contact ออกมา
-router.get('/usercontact', function (req, res, next) {
+router.get('/usercontact1', function (req, res, next) {
 	con.query('SELECT * FROM contact', function (err, rows) {
 		// res.send(rows[2].email);
 		var datadetails = '';
 		for (let i = 0; i < rows.length; i++) {
-			datadetails += String(rows[i].no) + "." + rows[i].email + " | " + rows[i].details + "<br>"
+			datadetails += String("No."+rows[i].no) + " | "+rows[i].date +" | " + rows[i].email + " | " + rows[i].details + "<br>"
 		}
 		res.send(datadetails)
 	})
