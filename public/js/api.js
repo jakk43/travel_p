@@ -1,15 +1,14 @@
 // ---------------tat-------------------
 
-
+$.ajaxSetup({
+    headers: {
+        'Authorization': 'bearer GqQmVELC0cHh9qrGNUDrl9KkZKQCWd9s6Yg1u9oUVbTqXKdXHWkl)9bjDd3gDQcFvTHPbQfsZlv3b)pqv)taLpW=====2',
+        'Accept-Language': 'th'
+    }
+});
 function myplace(){
-  
+    
 
-    $.ajaxSetup({
-        headers: {
-            'Authorization': 'bearer GqQmVELC0cHh9qrGNUDrl9KkZKQCWd9s6Yg1u9oUVbTqXKdXHWkl)9bjDd3gDQcFvTHPbQfsZlv3b)pqv)taLpW=====2',
-            'Accept-Language': 'th'
-        }
-    });
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     type  =urlParams.get('type');
@@ -41,6 +40,7 @@ function myplace(){
         if (!empty((latitude(json) && longitude(json)))) {
             initMap(latitude(json), longitude(json), "map");
         }
+        alert("myplace")
 
     });
 
@@ -61,7 +61,6 @@ function myplace(){
     }
 
 }
-
 // -----------------------map--------------------
 function initMap(a, b, c) {
     const uluru = {
@@ -88,7 +87,7 @@ fetch(url)
         return response.json() // แปลงข้อมูลที่ได้เป็น json
     })
     .then(function (json) {
-        console.log(json)
+        // console.log(json)
         document.getElementById("NewConfirmed").innerHTML = JSON.stringify(json.NewConfirmed)
         document.getElementById("NewDeaths").innerHTML = JSON.stringify(json.NewDeaths)
         document.getElementById("NewHospitalized").innerHTML = JSON.stringify(json.NewHospitalized)
@@ -103,7 +102,7 @@ fetch(url2)
         return response.json() // แปลงข้อมูลที่ได้เป็น json
     })
     .then(function (json) {
-        console.log(json.UpdateDate)
+        // console.log(json.UpdateDate)
         document.getElementById("UpdateDate").innerHTML = JSON.stringify(json.UpdateDate).slice(1, -1)
 
         var totalCovid = json.Data[(json.Data.length) - 1]
@@ -116,21 +115,18 @@ fetch(url2)
 
 
 function mysearch(){
-    $.ajaxSetup({
-        headers: {
-            'Authorization': 'bearer GqQmVELC0cHh9qrGNUDrl9KkZKQCWd9s6Yg1u9oUVbTqXKdXHWkl)9bjDd3gDQcFvTHPbQfsZlv3b)pqv)taLpW=====2',
-            'Accept-Language': 'th'
-        }
-    });
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    keyword  =urlParams.get('name');
-    categories = urlParams.get('category');
-    console.log("--")
-    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword="+keyword +"&categories="+categories+"", function (json) {
+    keyword  =urlParams.get('keyword');
+    // categories = urlParams.get('category');
+    console.log("-222222222222222222-")
+    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword="+keyword+"", function (json) {
+        // +"&categories="+categories
+        alert("mysearch")
 
-    console.log(json)
+        console.log(json)
+
 
     });
     
