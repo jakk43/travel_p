@@ -6,40 +6,51 @@ $.ajaxSetup({
         'Accept-Language': 'th'
     }
 });
-function myplace(){
-    
+function myplace() {
+
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    type  =urlParams.get('type');
+    type = urlParams.get('type');
     id = urlParams.get('id');
 
     $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/" + type + "/" + id, function (json) {
         // console.log(json)
         //name
-        document.getElementById("place_name").innerHTML=JSON.stringify(json.result.place_name).slice(1, -1)
+        document.getElementById("place_name").innerHTML = JSON.stringify(json.result.place_name).slice(1, -1)
         //image
         try {
             $("#img").attr("src", JSON.stringify(json.result.web_picture_urls[0]).slice(1, -1));
-        } catch {}
+        } catch { }
         //detail
-        document.getElementById("detail").innerHTML = JSON.stringify(json.result.place_information.detail).slice(1, -1)
-        document.getElementById("district").innerHTML = JSON.stringify(json.result.location.district).slice(1, -1)
-        document.getElementById("destination").innerHTML = JSON.stringify(json.result.destination).slice(1, -1)
-        document.getElementById("attraction_types").innerHTML = JSON.stringify(json.result.place_information.attraction_types[0].description).slice(1, -1)
+        try {
+            document.getElementById("detail").innerHTML = JSON.stringify(json.result.place_information.detail).slice(1, -1)
+
+        } catch { }
+        try {
+            document.getElementById("district").innerHTML = JSON.stringify(json.result.location.district).slice(1, -1)
+            document.getElementById("destination").innerHTML = JSON.stringify(json.result.destination).slice(1, -1)
+            document.getElementById("attraction_types").innerHTML = JSON.stringify(json.result.place_information.attraction_types[0].description).slice(1, -1)
+        } catch { }
 
         // document.getElementById("weekday_text").innerHTML = JSON.stringify(json.result.opening_hours.weekday_text.day1);
 
-        if (weekday_text(json) && weekday_text_time(json) != empty) {
+        try {
             $("#weekday_text").append(weekday_text(json));
             $("#weekday_text_time").append(weekday_text_time(json));
-        } else {
+        } catch {
             document.getElementById("weekday_text").innerHTML = ("ไม่มี")
+
         }
 
-        if (!empty((latitude(json) && longitude(json)))) {
-            initMap(latitude(json), longitude(json), "map");
-        }
+        // if (weekday_text(json) && weekday_text_time(json) != empty()) {
+        //     $("#weekday_text").append(weekday_text(json));
+        //     $("#weekday_text_time").append(weekday_text_time(json));
+        // } else {
+        //     document.getElementById("weekday_text").innerHTML = ("ไม่มี")
+        // }
+
+        initMap(latitude(json), longitude(json), "map");
         alert("myplace")
 
     });
@@ -114,22 +125,72 @@ fetch(url2)
     })
 
 
-function mysearch(){
+function mysearch() {
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    keyword  =urlParams.get('keyword');
+    keyword = urlParams.get('keyword');
     // categories = urlParams.get('category');
     console.log("-222222222222222222-")
-    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword="+keyword+"", function (json) {
+    $.getJSON("https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=" + keyword + "", function (json) {
         // +"&categories="+categories
-        alert("mysearch")
+        // alert("mysearch")
+        // console.log(json.result[0].place_id)
 
-        console.log(json)
+        // var t_search =Array;
+        // for (let i = 0; i < json.result.length; i++) {
 
+        //     if(json.result[i].thumbnail_url != empty()){
+        //         // t_search+=("'"+ json.result[i].place_id+"'"+",")
+        //         t_search+= json.result[i].place_id
+
+        //     }
+
+        // }
+        // console.log(t_search)
+
+        var count = 0;
+
+        for (let k = 0; k < 50; k++) {
+
+            try {
+                if (json.result[k].thumbnail_url != empty()) {
+
+
+                    for (let i = 0; i < 1; i++) {
+
+                        document.getElementById("searchplace_name" + (count + 1)).innerHTML = JSON.stringify(json.result[k].place_name).slice(1, -1)
+                        $("#searchimg" + (count + 1)).attr("src", JSON.stringify(json.result[k].thumbnail_url).slice(1, -1));
+
+                        try {
+                            document.getElementById("searchintro" + (count + 1)).innerHTML = JSON.stringify(json.result[k].place_information.detail).slice(1, -1)
+
+                        } catch { }
+                    }
+
+                    count++;
+
+                }
+            } catch {
+
+            }
+
+
+
+
+        }
+
+        // document.getElementById("searchplace_name1").innerHTML=JSON.stringify(json.result[41].place_name).slice(1, -1)
+        // try {
+        //     $("#searchimg1").attr("src", JSON.stringify(json.result[41].thumbnail_url).slice(1, -1));
+        // } catch {}
+        // try{
+        //     document.getElementById("searchintro1").innerHTML = JSON.stringify(json.result[41].place_information.detail).slice(1, -1)
+
+        // }catch{}
 
     });
-    
+
 }
 
 
