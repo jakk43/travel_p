@@ -372,7 +372,7 @@ $("#sign_up").submit(function (event) {
   }
   $.post("/user_sign_up", formData, function (result) {
       if(result=="Successful"){
-         location.href = "http://localhost:3000/"
+         location.href = "http://localhost:3000/index_login"
       }else{
          $('#sign_up_failed').html(result);
       }
@@ -389,8 +389,8 @@ $("#sign_in").submit(function (event) {
   }
   $.post("/user_sign_in", formData2, function (result) {
     if(result=="Successful"){
-         // window.location
-         location.href = "http://localhost:3000/"
+      window.location.replace("/index_login");
+         
         
         //  $('#xxx').html("USER");
       }else{

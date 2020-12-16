@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
 	res.render('index', {
@@ -39,6 +40,21 @@ router.get('/contact', function (req, res, next) {
 });
 router.get('/search', function (req, res, next) {
 	res.render('search', {
+		title: 'Express'
+	});
+});
+router.get('/index_login', function (req, res, next) {
+	res.render('index_login', {
+		title: 'Express'
+	});
+});
+router.get('/content_login', function (req, res, next) {
+	res.render('content_login', {
+		title: 'Express'
+	});
+});
+router.get('/usercontact_login', function (req, res, next) {
+	res.render('usercontact_login', {
 		title: 'Express'
 	});
 });
@@ -89,7 +105,7 @@ router.post("/user_sign_in", function (req, res) {
 			if (results.length > 0) {
 				if (results[0].password == password) {
 					res.send("Successful");
-					// res.send("Successful");
+					
 				} else {
 					res.send("User and password does not match");
 				}
